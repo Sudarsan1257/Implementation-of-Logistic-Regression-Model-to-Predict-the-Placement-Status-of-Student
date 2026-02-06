@@ -60,11 +60,6 @@ RegisterNumber:  212224220111
 */
 ```
 ```python
-/*
-Program to implement the the Logistic Regression Model to Predict the Placement Status of Student.
-Developed by: Deepak S
-RegisterNumber: 212224230053
-*/
 import pandas as pd
 data=pd.read_csv("Placement_Data.csv")
 data.head()
@@ -122,23 +117,30 @@ lr.predict([[1,80,1,90,1,1,90,1,0,85,1,85]])
 
 ## Output:
 TOP 5 ELEMENTS
+
 <img width="1320" height="263" alt="image" src="https://github.com/user-attachments/assets/501dd7e9-e215-4b6d-8b0b-0e8d77e4fced" />
 <img width="1178" height="254" alt="image" src="https://github.com/user-attachments/assets/6ff79e02-3b3b-40eb-be06-ecc1797e5ec7" />
 
 PRINT DATA
+
 <img width="1109" height="554" alt="image" src="https://github.com/user-attachments/assets/5ee2d713-9e50-4ff1-827e-2ef8cffb51b5" />
 
 CONFUSION ARRAY
+
 <img width="781" height="74" alt="image" src="https://github.com/user-attachments/assets/937f713b-9794-4ce7-95e5-ef22165884d0" />
 
 ACCURACY VALUE
+
 <img width="326" height="59" alt="image" src="https://github.com/user-attachments/assets/0255961c-121f-44b3-82ab-1d00cda6c918" />
 
 CLASSFICATION REPORT
+
 <img width="286" height="67" alt="image" src="https://github.com/user-attachments/assets/b6e2251d-7921-4e20-aebd-719cf74ecc75" />
+
 <img width="651" height="223" alt="image" src="https://github.com/user-attachments/assets/b86fc18e-adba-4510-868f-1b25059a156e" />
 
 PREDICTION
+
 <img width="555" height="55" alt="image" src="https://github.com/user-attachments/assets/489cb28d-75c2-4199-bc3f-e20a54fb7fa5" />
 
 
