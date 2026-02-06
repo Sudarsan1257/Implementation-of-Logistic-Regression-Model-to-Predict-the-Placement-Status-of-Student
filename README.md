@@ -8,22 +8,138 @@ To write a program to implement the the Logistic Regression Model to Predict the
 2. Anaconda – Python 3.7 Installation / Jupyter notebook
 
 ## Algorithm
-1. 
-2. 
-3. 
-4. 
+1.Collect the Dataset
+Obtain the student dataset containing independent variables
+(e.g., CGPA, aptitude score, technical skills, internships, etc.)
+and the dependent variable Placement Status (Placed / Not Placed).
 
+2.Define Variables
+Let X be the independent variables (features).
+Let Y be the dependent variable (Placement Status: 0 or 1).
+
+3.Preprocess the Data
+Handle missing values.
+Encode categorical variables into numerical form.
+Scale or normalize features if required.
+
+4.Split the Dataset
+Divide the dataset into training set and testing set.
+Initialize Model Parameters
+Initialize weights w and bias b to zero (or small random values).
+
+5.Compute the Linear Combination
+For each data point, compute:
+z=wX+b
+
+6.Apply the Sigmoid Function
+Convert the linear output into probability using:​
+<img width="249" height="87" alt="Screenshot 2026-02-06 105226" src="https://github.com/user-attachments/assets/90d0eda1-a7b9-4972-8363-2d97fa4402b7" />
+
+7.Calculate the Loss Function
+Compute the log loss (binary cross-entropy) to measure prediction error.
+
+8.Update Parameters Using Gradient Descent
+Adjust weights and bias iteratively using the learning rate α:
+<img width="306" height="159" alt="image" src="https://github.com/user-attachments/assets/98ff61ce-1c5d-4341-927d-d14f945fbd02" />
+
+9.Repeat Until Convergence
+Repeat steps 6–9 for a fixed number of iterations or until the loss is minimized.
+
+10.Make Predictions
+Predict placement status using:
+<img width="385" height="102" alt="image" src="https://github.com/user-attachments/assets/90df2203-980f-43ec-b15a-d36b86c927dd" />
+
+11.Evaluate the Model
+Measure performance using accuracy, confusion matrix, precision, recall, or F1-score.
 ## Program:
 ```
 /*
 Program to implement the the Logistic Regression Model to Predict the Placement Status of Student.
-Developed by: 
-RegisterNumber:  
+Developed by: Sudarsan.A
+RegisterNumber:  212224220111
 */
+```
+```python
+/*
+Program to implement the the Logistic Regression Model to Predict the Placement Status of Student.
+Developed by: Deepak S
+RegisterNumber: 212224230053
+*/
+import pandas as pd
+data=pd.read_csv("Placement_Data.csv")
+data.head()
+
+data1=data.copy()
+data1=data1.drop(["sl_no","salary"],axis=1)#Browses the specified row or column
+data1.head()
+
+data1.isnull().sum()
+
+data1.duplicated().sum()
+
+from sklearn.preprocessing import LabelEncoder
+le=LabelEncoder()
+data1["gender"]=le.fit_transform(data1["gender"])
+data1["ssc_b"]=le.fit_transform(data1["ssc_b"])
+data1["hsc_b"]=le.fit_transform(data1["hsc_b"])
+data1["hsc_s"]=le.fit_transform(data1["hsc_s"])
+data1["degree_t"]=le.fit_transform(data1["degree_t"])
+data1["workex"]=le.fit_transform(data1["workex"])
+data1["specialisation"]=le.fit_transform(data1["specialisation"] )     
+data1["status"]=le.fit_transform(data1["status"])
+data1 
+
+x=data1.iloc[:,:-1]
+x
+
+y=data1["status"]
+y
+
+from sklearn.model_selection import train_test_split
+x_train,x_test,y_train,y_test=train_test_split(x,y,test_size=0.2,random_state=0)
+
+from sklearn.linear_model import LogisticRegression
+lr=LogisticRegression(solver="liblinear")
+lr.fit(x_train,y_train)
+y_pred=lr.predict(x_test)
+y_pred
+
+from sklearn.metrics import accuracy_score
+accuracy=accuracy_score(y_test,y_pred)
+accuracy
+
+from sklearn.metrics import confusion_matrix
+confusion=confusion_matrix(y_test,y_pred)
+confusion
+
+from sklearn.metrics import classification_report
+classification_report1 = classification_report(y_test,y_pred)
+print(classification_report1)
+
+lr.predict([[1,80,1,90,1,1,90,1,0,85,1,85]])
+
 ```
 
 ## Output:
-![the Logistic Regression Model to Predict the Placement Status of Student](sam.png)
+TOP 5 ELEMENTS
+<img width="1320" height="263" alt="image" src="https://github.com/user-attachments/assets/501dd7e9-e215-4b6d-8b0b-0e8d77e4fced" />
+<img width="1178" height="254" alt="image" src="https://github.com/user-attachments/assets/6ff79e02-3b3b-40eb-be06-ecc1797e5ec7" />
+
+PRINT DATA
+<img width="1109" height="554" alt="image" src="https://github.com/user-attachments/assets/5ee2d713-9e50-4ff1-827e-2ef8cffb51b5" />
+
+CONFUSION ARRAY
+<img width="781" height="74" alt="image" src="https://github.com/user-attachments/assets/937f713b-9794-4ce7-95e5-ef22165884d0" />
+
+ACCURACY VALUE
+<img width="326" height="59" alt="image" src="https://github.com/user-attachments/assets/0255961c-121f-44b3-82ab-1d00cda6c918" />
+
+CLASSFICATION REPORT
+<img width="286" height="67" alt="image" src="https://github.com/user-attachments/assets/b6e2251d-7921-4e20-aebd-719cf74ecc75" />
+<img width="651" height="223" alt="image" src="https://github.com/user-attachments/assets/b86fc18e-adba-4510-868f-1b25059a156e" />
+
+PREDICTION
+<img width="555" height="55" alt="image" src="https://github.com/user-attachments/assets/489cb28d-75c2-4199-bc3f-e20a54fb7fa5" />
 
 
 ## Result:
